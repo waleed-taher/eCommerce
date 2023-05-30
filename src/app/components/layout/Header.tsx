@@ -1,17 +1,18 @@
+
+import react from 'react'
+'use client'
+import React, {useState} from 'react'
 import Image from "next/image";
 import Wrapper from "@/app/components/shared/Wrapper";
 import Search from "@/app/components/widget/Search";
-import { ChangeEventHandler } from "react";
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const Header = () => {
-
-  const onChange =(e: ChangeEventHandler<HTMLInputElement>) =>{
-    console.log('hi')
-  }
+  const [cartCount, setCartCount] = useState(0)
   return (
     <header>
       <Wrapper>
-        <div className="flex flex-row justify-evenly items-center">
+        <div className="flex flex-row items-center justify-evenly">
           <div>
             {/* add Logo Here */}
             <h3>Dine Market</h3>
@@ -33,8 +34,11 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <Search name="search" value="" placeholder="What Are You Looking For...." />
-          <h3>Cart</h3>
+          <Search name="search"  placeholder="What Are You Looking For...." />
+          <div className='relative cursor-pointer '>
+            <AiOutlineShoppingCart size={28}/>
+            <span className='absolute pl-[7px] pr-[7px] rounded-[10px]  top-[-4px] right-[-4px] text-[7px] bg-red-500 text-white py-[4px]'>{cartCount}</span>
+          </div>
         </div>
       </Wrapper>
     </header>
