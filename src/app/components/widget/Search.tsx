@@ -28,7 +28,7 @@ import React, { useState } from 'react'
   <form onSubmit={handleSubmit}>
         {/* enter search icon here use position to put icon on the search field left side */}
         <input name ={name} value={values.search} placeholder={placeholder} 
-        className='w-full py-1 pl-4 pr-24 text-sm border-2 rounded-md '
+        className='w-full py-1 pl-4 pr-24 text-sm border-2 rounded-md'
         onChange={onChange}
         />
     </form>
