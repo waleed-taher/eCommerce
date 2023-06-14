@@ -28,7 +28,7 @@ const Kids = async () => {
       <Wrapper>
         <div className="grid grid-cols-3 cursor-pointer ml-52 gap-x-4 gap-y-8 max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:ml-0">
           {data.map((item) => (
-            <Link href={`/product/${item.title.toLowerCase()}`}>
+            <Link href={`/product/${item.title.replaceAll(" ", "-")}`}>
               <div className="max-h-[300px] mb-44">
                 <Image
                   src={urlForImage(item.image).url()}
