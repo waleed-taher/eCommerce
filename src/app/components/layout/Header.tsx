@@ -7,6 +7,7 @@ import Wrapper from "@/app/components/shared/Wrapper";
 import Search from "@/app/components/widget/Search";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import Link from "next/link";
 
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -21,22 +22,24 @@ const Header = () => {
         <div className="flex flex-row items-center justify-evenly max-lg:justify-between">
           <div className="max-lg:mx-8">
             {/* add Logo Here */}
-            <Image src={Logo} alt="Dine Market Logo" />
+            <Link href={"/"}>
+              <Image src={Logo} alt="Dine Market Logo" />
+            </Link>
           </div>
           {/* navbar here */}
           <nav className="max-lg:hidden">
-            <ul className="flex flex-row justify-between gap-12">
-              <li>
-                <a>Female</a>
+            <ul className="flex flex-row justify-between gap-12 text-lg font-medium">
+              <li className="cursor-pointer hover:text-orange-300">
+                <Link href="/Female">Female</Link>
               </li>
-              <li>
-                <a>Male</a>
+              <li className="cursor-pointer hover:text-orange-300">
+                <Link href="/Male">Male</Link>
               </li>
-              <li>
-                <a>Kids</a>
+              <li className="cursor-pointer hover:text-orange-300">
+                <Link href="/Kids">Kids</Link>
               </li>
-              <li>
-                <a>All Products</a>
+              <li className="cursor-pointer hover:text-orange-300">
+                <Link href="/AllProducts">All Products</Link>
               </li>
             </ul>
           </nav>
