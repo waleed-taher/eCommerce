@@ -37,8 +37,8 @@ export default async function ProductCard(): Promise<JSX.Element> {
     <div>
       <Wrapper>
         <div className="grid grid-cols-3 ml-48 cursor-pointer gap-x-4 gap-y-8 max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:ml-0">
-          {data.map((item, key) => (
-            <div className="max-h-[300px] mb-16" key={key}>
+          {data.map((item, index) => (
+            <div className="max-h-[300px] mb-16" key={index}>
               <Image
                 src={urlForImage(item.image).url()}
                 alt="ProductImage"

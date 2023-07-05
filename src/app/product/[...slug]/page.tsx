@@ -43,10 +43,10 @@ const ProductDetails = async () => {
   return (
     <div>
       <Wrapper>
-        {data.map((item, key) => (
+        {data.map((item, index) => (
           <section
             className="flex items-center justify-around object-none w-4/5 gap-16 ml-48"
-            key={key}
+            key={index}
           >
             <div className="w-3/5">
               <Image
