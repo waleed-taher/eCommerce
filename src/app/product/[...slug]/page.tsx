@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { client } from "@/lib/sanityClient";
 import { usePathname } from "next/navigation";
-import React from "react";
 import Image from "next/image";
 import { Image as IImage } from "sanity";
 import { urlForImage } from "../../../../sanity/lib/image";
 import Wrapper from "@/app/components/shared/Wrapper";
+import Link from "next/link";
 
 interface IProduct {
   title: string;
@@ -20,7 +20,7 @@ interface ISize {
 }
 
 const ProductDetails = async () => {
-  const [qtyCount, setqtyCount] = useState(1);
+  let [qtyCount, setqtyCount] = useState(1);
   const pathname = usePathname();
   const incompleteurl = pathname.slice(pathname.lastIndexOf("/") + 1);
   const url = incompleteurl.replaceAll("-", " ");
@@ -36,20 +36,18 @@ const ProductDetails = async () => {
     name
   }`);
 
-  const handleSubtraction = () => {
-    setqtyCount(qtyCount - 1);
-  };
-
   const handleAddition = () => {
-    setqtyCount(qtyCount + 1);
-    console.log(qtyCount);
+    setqtyCount(qtyCount++);
   };
 
   return (
     <div>
       <Wrapper>
-        {data.map((item) => (
-          <section className="flex items-center justify-around object-none w-4/5 gap-16 ml-48">
+        {data.map((item, key) => (
+          <section
+            className="flex items-center justify-around object-none w-4/5 gap-16 ml-48"
+            key={key}
+          >
             <div className="w-3/5">
               <Image
                 src={urlForImage(item.image).url()}
@@ -81,17 +79,22 @@ const ProductDetails = async () => {
                       ? "rounded-full cursor-pointer"
                       : "rounded-full cursor-not-allowed"
                   }`}
-                  onClick={handleSubtraction}
+                  onClick={() => setqtyCount(qtyCount--)}
                 >
                   -
                 </button>
                 <span>{qtyCount}</span>
                 <button
                   className="rounded-full cursor-pointer"
-                  onClick={handleAddition}
+                  onClick={() => setqtyCount(qtyCount++)}
                 >
                   +
                 </button>
+                <Link href={"/Cart"}>
+                  <button className="px-6 py-2 text-white bg-gray-400 border">
+                    Add to Cart
+                  </button>
+                </Link>
               </div>
             </div>
           </section>
