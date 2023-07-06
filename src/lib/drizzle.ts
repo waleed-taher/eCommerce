@@ -13,7 +13,7 @@ export const cartTable = pgTable("cart", {
     quantity: integer("quantity").notNull()
  })
 
- export const orderTable = pgTable("order", {
+ export const orderTable = pgTable("orders", {
     id: serial("id").primaryKey(),
     name: varchar("name", {
         length: 255
