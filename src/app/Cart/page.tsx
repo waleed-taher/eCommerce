@@ -2,13 +2,13 @@ import React from "react";
 import Cart from "../components/layout/Cart";
 import Footer from "../components/layout/Footer";
 
-const page = () => {
+const CartData = () => {
   return (
     <div>
+      {/* @ts-expect-error Server Component */}
       <Cart />
-      <Footer />
     </div>
   );
 };
 
-export default page;
+export default CartData;

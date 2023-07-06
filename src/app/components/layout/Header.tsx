@@ -9,7 +9,7 @@ import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import Link from "next/link";
 
-const Header = () => {
+const Header = async () => {
   const [cartCount, setCartCount] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = useCallback(() => {
@@ -30,16 +30,16 @@ const Header = () => {
           <nav className="max-lg:hidden">
             <ul className="flex flex-row justify-between gap-12 text-lg font-medium">
               <li className="cursor-pointer hover:text-orange-300">
-                <Link href="/Female">Female</Link>
+                <a href="/Female">Female</a>
               </li>
               <li className="cursor-pointer hover:text-orange-300">
                 <Link href="/Male">Male</Link>
               </li>
               <li className="cursor-pointer hover:text-orange-300">
-                <Link href="/Kids">Kids</Link>
+                <a href="/Kids">Kids</a>
               </li>
               <li className="cursor-pointer hover:text-orange-300">
-                <Link href="/AllProducts">All Products</Link>
+                <a href="/AllProducts">All Products</a>
               </li>
             </ul>
           </nav>
@@ -53,6 +53,7 @@ const Header = () => {
                 {cartCount}
               </span>
             </div>
+
             <div className="cursor-pointer">
               <AiOutlineUser size={28} />
             </div>
