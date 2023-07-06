@@ -1,10 +1,12 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import { client } from "@/lib/sanityClient";
 import Image from "next/image";
 import { Image as IImage } from "sanity";
 import Wrapper from "@/app/components/shared/Wrapper";
 import { urlForImage } from "../../../sanity/lib/image";
 import Link from "next/link";
+import Skeleton from "../components/shared/Skeleton";
 
 export const getProductData = async () => {
   const res = await client.fetch(
@@ -20,15 +22,37 @@ interface IProduct {
   price: number;
 }
 
-const Female = async () => {
-  const data: IProduct[] = await getProductData();
+const Female = () => {
+  const [data, setData] = useState<IProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result: IProduct[] = await getProductData();
+      setData(result);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    // Render skeleton screen while loading
+    return (
+      <div>
+        <Wrapper>
+          <Skeleton/>
+        </Wrapper>
+      </div>
+    );
+  }
 
   return (
     <div>
       <Wrapper>
         <div className="grid grid-cols-3 cursor-pointer ml-52 gap-x-4 gap-y-8 max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:ml-0">
           {data.map((item) => (
-            <Link href={`/product/${item.title.replaceAll(" ", "-")}`}>
+            <Link key={item.title} href={`/product/${item.title.replaceAll(" ", "-")}`}>
               <div className="max-h-[300px] mb-44">
                 <Image
                   src={urlForImage(item.image).url()}

@@ -74,17 +74,17 @@ const Header = () => {
                     <AiOutlineUser size={28} />
                   </div>
                 </div>
-                <li>
-                  <a>Female</a>
+                <li className="cursor-pointer hover:text-orange-300">
+                  <Link onClick={()=>setIsOpen(false)} href="/Female">Female</Link>
                 </li>
-                <li>
-                  <a>Male</a>
+                <li className="cursor-pointer hover:text-orange-300">
+                  <Link onClick={()=>setIsOpen(false)} href="/Male">Male</Link>
                 </li>
-                <li>
-                  <a>Kids</a>
+                <li className="cursor-pointer hover:text-orange-300">
+                  <Link onClick={()=>setIsOpen(false)} href="/Kids">Kids</Link>
                 </li>
-                <li>
-                  <a>All Products</a>
+                <li className="cursor-pointer hover:text-orange-300">
+                  <Link onClick={()=>setIsOpen(false)} href="/AllProducts">All Products</Link>
                 </li>
               </ul>
             </div>

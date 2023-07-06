@@ -6,8 +6,12 @@ import OurBrand2 from "@/app/assets/Featured2.webp";
 import OurBrand3 from "@/app/assets/Featured3.webp";
 import OurBrand4 from "@/app/assets/Featured4.webp";
 import Wrapper from "../shared/Wrapper";
+import Button from "../shared/Button";
 
 const Hero = () => {
+  const handleClick = ()=> {
+    console.log("DSAsad")
+  }
   return (
     <section>
       <Wrapper>
@@ -24,9 +28,7 @@ const Hero = () => {
                 Anyone can beat you but no one can beat your outfit as long as
                 you <br /> wear Dine Outfits
               </p>
-              <button className="px-20 py-4 mb-8 font-semibold text-white bg-black rounded-md shadow-inner cursor-pointer hover:bg-white hover:text-black shadow-slate-800">
-                Start Shopping
-              </button>
+              <Button title="Start Shopping " paddingx={20} paddingy={4}  />
             </div>
             <div className="flex gap-24 mb-8 justify-evenly featured_brands">
               <Image src={OurBrand1} alt="brandImg" />
