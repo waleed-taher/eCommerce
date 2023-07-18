@@ -8,14 +8,16 @@ import { urlForImage } from "../../../sanity/lib/image";
 import Link from "next/link";
 import Skeleton from "../components/shared/Skeleton";
 
-export const getProductData = async () => {
+const getProductData = async () => {
   const res = await client.fetch(
     `*[_type == "product" && category._ref in *[_type=="category" && name=="Female"]._id ]`
   );
+
   return res;
 };
 
 interface IProduct {
+  id: string;
   title: string;
   description: string;
   image: IImage;
@@ -52,7 +54,10 @@ const Female = () => {
       <Wrapper>
         <div className="grid grid-cols-3 cursor-pointer ml-52 gap-x-4 gap-y-8 max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:ml-0">
           {data.map((item) => (
-            <Link key={item.title} href={`/product/${item.title.replaceAll(" ", "-")}`}>
+            <Link
+              key={item.id}
+              href={`/Product2/${item.title.replaceAll(" ", "-")}`}
+            >
               <div className="max-h-[300px] mb-44">
                 <Image
                   src={urlForImage(item.image).url()}
